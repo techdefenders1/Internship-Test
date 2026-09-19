@@ -1,0 +1,1749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cyber Security Internship / Project Work - Online Test</title>
+
+<style>
+    body{
+        font-family:Arial,sans-serif;
+        background:linear-gradient(135deg,#0f172a,#1e293b);
+        color:#fff;
+        margin:0;
+        padding:20px;
+    }
+
+    .container{
+        max-width:900px;
+        margin:auto;
+        background:#1e293b;
+        padding:30px;
+        border-radius:20px;
+        box-shadow:0 0 25px rgba(0,0,0,.4);
+    }
+
+    .logo{
+        text-align:center;
+        margin-bottom:20px;
+    }
+
+    .logo img{
+        width:400px;
+        height: auto;
+        max-width:100%;
+    }
+
+    .event-header{
+        text-align:center;
+        margin-bottom:25px;
+    }
+
+    .event-header h1{
+        color:#facc15;
+        font-size:30px;
+        margin:8px 0;
+    }
+
+    .event-header h2{
+        color:#38bdf8;
+        font-size:23px;
+        margin:8px 0;
+    }
+
+    .event-header h3{
+        font-size:18px;
+        line-height:1.5;
+        margin:8px 0;
+    }
+
+    .event-info{
+        background:#0f172a;
+        border-radius:15px;
+        padding:15px;
+        line-height:1.8;
+        text-align:center;
+        margin-bottom:25px;
+    }
+
+    h1,h2,h3{
+        text-align:center;
+    }
+
+    input,select{
+        width:100%;
+        padding:14px;
+        margin:10px 0;
+        border:none;
+        border-radius:10px;
+        font-size:16px;
+        box-sizing:border-box;
+    }
+
+    select{
+        background:#fff;
+        color:#111;
+        cursor:pointer;
+    }
+
+    button{
+        padding:14px 30px;
+        border:none;
+        border-radius:10px;
+        cursor:pointer;
+        font-size:16px;
+        margin:10px 5px;
+        background:#06b6d4;
+        color:white;
+    }
+
+    button:hover{
+        opacity:.9;
+    }
+
+    .option{
+        background:#334155;
+        padding:15px;
+        margin:12px 0;
+        border-radius:12px;
+        cursor:pointer;
+        transition:.3s;
+    }
+
+    .option:hover{
+        background:#475569;
+    }
+
+    .selected{
+        background:#06b6d4 !important;
+    }
+
+    .timer{
+        text-align:center;
+        font-size:24px;
+        color:#22c55e;
+        margin-bottom:15px;
+        font-weight:bold;
+    }
+
+    .question-number{
+        text-align:center;
+        color:#94a3b8;
+        margin-bottom:10px;
+    }
+
+    .rules{
+        background:#0f172a;
+        padding:20px;
+        border-radius:15px;
+        margin-top:20px;
+        line-height:1.8;
+    }
+
+    #result{
+        text-align:center;
+        padding:30px 10px;
+    }
+
+    .thank-you{
+        color:#22c55e;
+        font-size:22px;
+        line-height:1.6;
+        margin-top:20px;
+    }
+
+    .result-note{
+        font-size:18px;
+        line-height:1.7;
+        margin-top:15px;
+    }
+
+    @media(max-width:600px){
+        .container{padding:20px 15px}
+        .event-header h1{font-size:25px}
+        .event-header h2{font-size:20px}
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="logo">
+        <img src="logoall.png" alt="Marcraft / AIIPL Logo">
+    </div>
+
+    <!-- OFFICIAL EVENT TITLE -->
+    <div class="event-header">
+        <h1>Cyber Security</h1>
+        <h2>Internship / Project Work</h2>
+        <h3>Online Test</h3>
+
+        <div class="event-info">
+            <strong>By Marcraft, An NPI Brand and AIIPL</strong><br>
+            <strong>Department of Cyber Security</strong><br>
+            Government Holkar (Model, Autonomous) Science College, Indore (M.P.)<br>
+        </div>
+    </div>
+
+    <!-- REGISTRATION -->
+    <div id="registration">
+
+        <h2>Student Details</h2>
+
+        <input type="text" id="name" placeholder="Full Name" required>
+        <input type="text" id="father" placeholder="Father's Name" required>
+        <input type="tel" id="mobile" placeholder="Mobile Number" required>
+        <input type="email" id="email" placeholder="Email Address" required>
+        <input type="text" id="course" placeholder="Course" required>
+        <input type="text" id="semester" placeholder="Semester" required>
+
+        <select id="language" required>
+            <option value="">Choose Language</option>
+            <option value="English">English</option>
+            <option value="Hindi">हिंदी</option>
+        </select>
+
+        <div class="rules">
+            <h3>Instructions</h3>
+            • All questions are mandatory.<br>
+            • All registration fields are mandatory.<br>
+            • There are exactly 40 questions.<br>
+            • Each question carries 0.5 marks.<br>
+            • Maximum marks: 20.<br>
+            • Each question has 30 seconds.<br>
+            • Tab switching or minimizing will auto-submit the test.<br>
+            • Right-click is disabled.<br>
+            • Test can be attempted only once.<br>
+            • Use a stable internet connection.
+        </div>
+
+        <center>
+            <button onclick="startTest()">Start Test</button>
+        </center>
+
+    </div>
+
+    <!-- QUIZ -->
+    <div id="quiz" style="display:none;">
+
+        <div class="timer">
+            Time Left: <span id="time">30</span>s
+        </div>
+
+        <div class="question-number">
+            Question <span id="questionNumber">1</span> / 40
+        </div>
+
+        <h2 id="question"></h2>
+
+        <div id="options"></div>
+
+        <center>
+            <button id="nextBtn" onclick="nextQuestion()">Next Question</button>
+
+            <button id="submitBtn"
+                    onclick="submitTest()"
+                    style="display:none;background:#22c55e;">
+                Submit Test
+            </button>
+        </center>
+
+    </div>
+
+    <!-- FINAL SCREEN -->
+    <div id="result" style="display:none;">
+
+        <h1 id="studentName"></h1>
+
+        <div class="thank-you">
+            Thank you for completing the test!
+        </div>
+
+        <div class="result-note">
+            Your test has been submitted successfully.<br><br>
+            Best of luck for your future!
+        </div>
+
+        <!-- SCORE IS INTENTIONALLY NOT DISPLAYED -->
+
+    </div>
+
+</div>
+
+<script>
+
+/* =========================================================
+   GOOGLE APPS SCRIPT URL
+========================================================= */
+
+const SHEET_URL =
+"https://script.google.com/macros/s/AKfycbzwsG4idIvvT4QgFxCqoP38WVyGSFvt15CN7yEmNQ1tBYjk1jmiZW9pdeJs9jeQmIy-/exec";
+
+
+/* =========================================================
+   TEST SETTINGS
+========================================================= */
+
+const TOTAL_QUESTIONS = 40;
+const MARKS_PER_QUESTION = 0.5;
+const QUESTION_TIME = 30;
+
+
+/* =========================================================
+   ENGLISH QUESTION BANK - EXACTLY 40
+========================================================= */
+
+const englishQuestions = [
+
+{
+    q:"What is the primary goal of a “Phishing” attack?",
+    options:[
+        "A) To damage hardware",
+        "B) To trick a person into revealing sensitive information like passwords",
+        "C) To flood a network with traffic",
+        "D) To guess a password systematically"
+    ],
+    answer:1
+},
+
+{
+    q:"Hash functions like MD5 and SHA are primarily used to ensure which security principle?",
+    options:[
+        "A) Availability",
+        "B) Confidentiality",
+        "C) Integrity",
+        "D) Privacy"
+    ],
+    answer:2
+},
+
+{
+    q:"The method used to protect information by changing readable data into an unreadable format is called:",
+    options:[
+        "A) Hashing",
+        "B) Spoofing",
+        "C) Encryption",
+        "D) Firewalls"
+    ],
+    answer:2
+},
+
+{
+    q:"Which phishing technique specifically uses SMS or text messages?",
+    options:[
+        "A) Vishing",
+        "B) Smishing",
+        "C) Spear Phishing",
+        "D) Clone Phishing"
+    ],
+    answer:1
+},
+
+{
+    q:"What is a “Zero-Day Attack”?",
+    options:[
+        "A) An attack that takes zero days to resolve",
+        "B) An attack exploiting a previously unknown vulnerability before a patch is released",
+        "C) An attack that occurs on the first day of the year",
+        "D) An attack that wipes all data in a single day"
+    ],
+    answer:1
+},
+
+{
+    q:"Which of the following is a common red flag to identify a phishing email?",
+    options:[
+        "A) Professional signature block with accurate contact details",
+        "B) Impersonal generic greetings like “Dear Customer”",
+        "C) Correct spelling and grammar",
+        "D) No attachments or links included"
+    ],
+    answer:1
+},
+
+{
+    q:"Which security process verifies the identity of users or devices before allowing access?",
+    options:[
+        "A) Authorization",
+        "B) Encryption",
+        "C) Authentication",
+        "D) Hashing"
+    ],
+    answer:2
+},
+
+{
+    q:"What visual indicator often shows that a website uses an encrypted HTTPS connection?",
+    options:[
+        "A) A red warning sign",
+        "B) A padlock icon near the website address",
+        "C) A blinking text bar",
+        "D) A pop-up advertisement"
+    ],
+    answer:1
+},
+
+{
+    q:"What is the defining characteristic of a Trojan horse malware?",
+    options:[
+        "A) It locks files until a ransom is paid.",
+        "B) It disguises itself as legitimate or useful software.",
+        "C) It overwhelms servers with traffic.",
+        "D) It tracks user keystrokes legally."
+    ],
+    answer:1
+},
+
+{
+    q:"A broader approach to protecting devices like laptops, smartphones, and tablets that connect to a network is called:",
+    options:[
+        "A) Endpoint Security",
+        "B) Cloud Security",
+        "C) Physical Security",
+        "D) Access Control"
+    ],
+    answer:0
+},
+
+{
+    q:"What does the CIA Triad stand for in information security?",
+    options:[
+        "A) Cyber, Intelligence, Availability",
+        "B) Confidentiality, Integrity, Availability",
+        "C) Computers, Internet, Access",
+        "D) Confidentiality, Information, Authorization"
+    ],
+    answer:1
+},
+
+{
+    q:"Why should you avoid publicly sharing your home address, phone number, and real-time travel plans on social media?",
+    options:[
+        "A) It takes up too much server space.",
+        "B) It can create security and privacy risks.",
+        "C) It is against the law.",
+        "D) It will automatically lock your account."
+    ],
+    answer:1
+},
+
+{
+    q:"An attacker systematically trying many possible passwords until the correct one is found is executing a:",
+    options:[
+        "A) Dictionary Attack",
+        "B) Credential Stuffing",
+        "C) Brute Force Attack",
+        "D) Password Spraying"
+    ],
+    answer:2
+},
+
+{
+    q:"When configuring a basic firewall, public-facing servers like web or email servers should be placed into which network zone?",
+    options:[
+        "A) Local Area Network (LAN)",
+        "B) Demilitarized Zone (DMZ)",
+        "C) Secure Storage",
+        "D) Admin Portal"
+    ],
+    answer:1
+},
+
+{
+    q:"How is risk generally estimated in a common risk assessment model?",
+    options:[
+        "A) Threat × Vulnerability",
+        "B) Likelihood × Impact",
+        "C) Hackers × Data",
+        "D) Software × Hardware"
+    ],
+    answer:1
+},
+
+{
+    q:"Which security process determines what resources a valid user can access and what actions they can perform?",
+    options:[
+        "A) Authentication",
+        "B) Authorization",
+        "C) Encryption",
+        "D) Backing up"
+    ],
+    answer:1
+},
+
+{
+    q:"If you receive an urgent email saying your account will be deleted in 10 minutes unless you click a link, you should:",
+    options:[
+        "A) Click the link immediately",
+        "B) Reply with your password",
+        "C) Do not click the link and verify through official channels",
+        "D) Forward the email to all contacts"
+    ],
+    answer:2
+},
+
+{
+    q:"Which technology requires a second verification step even if a password is compromised?",
+    options:[
+        "A) Firewalls",
+        "B) Antivirus",
+        "C) Multi-Factor Authentication (MFA)",
+        "D) Hash Functions"
+    ],
+    answer:2
+},
+
+{
+    q:"Why are software and system updates important?",
+    options:[
+        "A) They increase hard-drive size.",
+        "B) They fix security weaknesses, correct errors, and improve performance.",
+        "C) They change passwords automatically.",
+        "D) They disable antivirus software."
+    ],
+    answer:1
+},
+
+{
+    q:"Malware that prevents victims from accessing their files and demands payment is called:",
+    options:[
+        "A) Spyware",
+        "B) Ransomware",
+        "C) Adware",
+        "D) Rootkit"
+    ],
+    answer:1
+},
+
+{
+    q:"What is an OTP meant for in online transactions?",
+    options:[
+        "A) To permanently replace your password",
+        "B) To verify a transaction or login",
+        "C) To encrypt your hard drive",
+        "D) To share with strangers"
+    ],
+    answer:1
+},
+
+{
+    q:"Which attack attempts to make a website or service unavailable by flooding it with massive traffic?",
+    options:[
+        "A) Phishing",
+        "B) SQL Injection",
+        "C) DDoS",
+        "D) Man-in-the-Middle"
+    ],
+    answer:2
+},
+
+{
+    q:"In encryption, the original readable information is referred to as:",
+    options:[
+        "A) Ciphertext",
+        "B) Plaintext",
+        "C) Key",
+        "D) Hash"
+    ],
+    answer:1
+},
+
+{
+    q:"Which is a recommended tool to securely create and store strong passphrases for dozens of accounts?",
+    options:[
+        "A) Sticky note",
+        "B) Public text file",
+        "C) Cloud-based password manager",
+        "D) Default smartphone notepad"
+    ],
+    answer:2
+},
+
+{
+    q:"Attackers using usernames and passwords stolen from one service to try logging into other services is called:",
+    options:[
+        "A) Keylogging",
+        "B) Spoofing",
+        "C) Credential Stuffing",
+        "D) Pretexting"
+    ],
+    answer:2
+},
+
+{
+    q:"Which is characteristic of a strong password?",
+    options:[
+        "A) Personal information",
+        "B) Short and easy",
+        "C) Combination of letters, numbers, and symbols",
+        "D) Reused across websites"
+    ],
+    answer:2
+},
+
+{
+    q:"Which malware attaches itself to legitimate files and generally requires user action to spread?",
+    options:[
+        "A) Worm",
+        "B) Trojan",
+        "C) Virus",
+        "D) Adware"
+    ],
+    answer:2
+},
+
+{
+    q:"According to the provided quiz, how often should employees frequently change their passwords?",
+    options:[
+        "A) Every 10 days",
+        "B) About every 90 days",
+        "C) Every 5 years",
+        "D) Never"
+    ],
+    answer:1
+},
+
+{
+    q:"Giving each employee only the access they need is known as the principle of:",
+    options:[
+        "A) Maximum Access",
+        "B) Least Privilege",
+        "C) Dual Control",
+        "D) Open Security"
+    ],
+    answer:1
+},
+
+{
+    q:"Secretly intercepting communication between two parties on unsecured public Wi-Fi is an example of:",
+    options:[
+        "A) Password Attack",
+        "B) Man-in-the-Middle (MITM) Attack",
+        "C) SQL Injection",
+        "D) DoS Attack"
+    ],
+    answer:1
+},
+
+{
+    q:"Which is a common risk of using Public Wi-Fi?",
+    options:[
+        "A) Connection speed is always too fast.",
+        "B) Attackers may intercept data or create fake Wi-Fi hotspots.",
+        "C) Battery drains instantly.",
+        "D) Antivirus is automatically downloaded."
+    ],
+    answer:1
+},
+
+{
+    q:"What acts as a security system that monitors and filters network traffic based on security rules?",
+    options:[
+        "A) Antivirus",
+        "B) Keylogger",
+        "C) Firewall",
+        "D) Malware"
+    ],
+    answer:2
+},
+
+{
+    q:"Which component of the CIA Triad ensures sensitive data is accessible only to authorized individuals?",
+    options:[
+        "A) Confidentiality",
+        "B) Integrity",
+        "C) Availability",
+        "D) Authorization"
+    ],
+    answer:0
+},
+
+{
+    q:"How can you verify the true destination URL of a link in an email without clicking it?",
+    options:[
+        "A) Copy and paste it to a friend",
+        "B) Hover your mouse over the link",
+        "C) Click it and close the tab",
+        "D) Print the email"
+    ],
+    answer:1
+},
+
+{
+    q:"An attack where malicious commands are inserted into input fields to manipulate a database is called:",
+    options:[
+        "A) Zero-Day Exploit",
+        "B) Phishing",
+        "C) SQL Injection",
+        "D) Ransomware"
+    ],
+    answer:2
+},
+
+{
+    q:"Following regular habits like using strong passwords, updating software, and being careful with links is called:",
+    options:[
+        "A) Cyber Hygiene",
+        "B) Social Engineering",
+        "C) Penetration Testing",
+        "D) Threat Hunting"
+    ],
+    answer:0
+},
+
+{
+    q:"Which social engineering technique involves an attacker pretending to be someone else, such as an IT employee?",
+    options:[
+        "A) Impersonation",
+        "B) Baiting",
+        "C) Tailgating",
+        "D) Smishing"
+    ],
+    answer:0
+},
+
+{
+    q:"Phishing conducted through voice calls is known as:",
+    options:[
+        "A) Smishing",
+        "B) Vishing",
+        "C) Whaling",
+        "D) Spoofing"
+    ],
+    answer:1
+},
+
+{
+    q:"When an attacker manipulates caller ID or email addresses to appear as a trusted person or organization, it is known as:",
+    options:[
+        "A) Spoofing",
+        "B) Tailgating",
+        "C) Baiting",
+        "D) Encryption"
+    ],
+    answer:0
+},
+
+{
+    q:"What is the full form of DMARC?",
+    options:[
+        "A) Domain Message Authentication & Response Control",
+        "B) Domain-based Message Authentication, Reporting & Conformance",
+        "C) Digital Mail Authentication, Reporting & Control",
+        "D) Domain Mail Authorization & Response Configuration"
+    ],
+    answer:1
+}
+
+];
+
+
+/* =========================================================
+   HINDI QUESTION BANK - EXACTLY 40
+========================================================= */
+
+const hindiQuestions = [
+
+{
+    q:"फिशिंग (Phishing) हमले का मुख्य उद्देश्य क्या होता है?",
+    options:[
+        "A. हार्डवेयर को नुकसान पहुँचाना",
+        "B. किसी व्यक्ति को पासवर्ड जैसी संवेदनशील जानकारी बताने के लिए धोखा देना",
+        "C. नेटवर्क पर बहुत अधिक ट्रैफिक भेजना",
+        "D. व्यवस्थित रूप से पासवर्ड का अनुमान लगाना"
+    ],
+    answer:1
+},
+
+{
+    q:"MD5 और SHA जैसे हैश फ़ंक्शन मुख्य रूप से किस सुरक्षा सिद्धांत को सुनिश्चित करने के लिए उपयोग किए जाते हैं?",
+    options:[
+        "A. उपलब्धता",
+        "B. गोपनीयता",
+        "C. अखंडता",
+        "D. निजता"
+    ],
+    answer:2
+},
+
+{
+    q:"पढ़ने योग्य डेटा को अपठनीय रूप में बदलकर जानकारी की सुरक्षा करने की विधि को क्या कहा जाता है?",
+    options:[
+        "A. हैशिंग",
+        "B. स्पूफिंग",
+        "C. एन्क्रिप्शन",
+        "D. फ़ायरवॉल"
+    ],
+    answer:2
+},
+
+{
+    q:"कौन-सी फिशिंग तकनीक विशेष रूप से SMS या टेक्स्ट संदेशों का उपयोग करती है?",
+    options:[
+        "A. विशिंग",
+        "B. स्मिशिंग",
+        "C. स्पीयर फिशिंग",
+        "D. क्लोन फिशिंग"
+    ],
+    answer:1
+},
+
+{
+    q:"'ज़ीरो-डे अटैक' क्या होता है?",
+    options:[
+        "A. ऐसा हमला जिसे हल करने में शून्य दिन लगते हैं",
+        "B. ऐसा हमला जिसमें पैच जारी होने से पहले किसी अज्ञात कमजोरी का फायदा उठाया जाता है",
+        "C. ऐसा हमला जो वर्ष के पहले दिन होता है",
+        "D. ऐसा हमला जो एक दिन में सभी डेटा को मिटा देता है"
+    ],
+    answer:1
+},
+
+{
+    q:"फिशिंग ईमेल की पहचान करने के लिए निम्नलिखित में से कौन-सा एक सामान्य चेतावनी संकेत है?",
+    options:[
+        "A. सही संपर्क विवरण वाला पेशेवर हस्ताक्षर",
+        "B. 'प्रिय ग्राहक' जैसे सामान्य और व्यक्तिगत न होने वाले अभिवादन",
+        "C. सही वर्तनी और व्याकरण",
+        "D. कोई अटैचमेंट या लिंक न होना"
+    ],
+    answer:1
+},
+
+{
+    q:"कौन-सी सुरक्षा प्रक्रिया किसी उपयोगकर्ता या डिवाइस की पहचान सत्यापित करती है, इससे पहले कि उसे एक्सेस दिया जाए?",
+    options:[
+        "A. प्राधिकरण",
+        "B. एन्क्रिप्शन",
+        "C. प्रमाणीकरण",
+        "D. हैशिंग"
+    ],
+    answer:2
+},
+
+{
+    q:"किस दृश्य संकेत से अक्सर पता चलता है कि वेबसाइट एन्क्रिप्टेड HTTPS कनेक्शन का उपयोग कर रही है?",
+    options:[
+        "A. लाल चेतावनी चिन्ह",
+        "B. वेबसाइट के पते के पास ताले का आइकन",
+        "C. चमकता हुआ टेक्स्ट बार",
+        "D. पॉप-अप विज्ञापन"
+    ],
+    answer:1
+},
+
+{
+    q:"ट्रोजन हॉर्स मैलवेयर की मुख्य विशेषता क्या है?",
+    options:[
+        "A. यह फिरौती मिलने तक फाइलों को लॉक कर देता है",
+        "B. यह खुद को वैध या उपयोगी सॉफ़्टवेयर के रूप में छिपाता है",
+        "C. यह सर्वर को बहुत अधिक ट्रैफिक से भर देता है",
+        "D. यह कानूनी रूप से उपयोगकर्ता के कीस्ट्रोक्स को ट्रैक करता है"
+    ],
+    answer:1
+},
+
+{
+    q:"लैपटॉप, स्मार्टफोन और टैबलेट जैसे नेटवर्क से जुड़े उपकरणों की सुरक्षा के लिए व्यापक दृष्टिकोण को क्या कहा जाता है?",
+    options:[
+        "A. एंडपॉइंट सुरक्षा",
+        "B. क्लाउड सुरक्षा",
+        "C. भौतिक सुरक्षा",
+        "D. एक्सेस कंट्रोल"
+    ],
+    answer:0
+},
+
+{
+    q:"सूचना सुरक्षा में CIA Triad का पूरा अर्थ क्या है?",
+    options:[
+        "A. साइबर, इंटेलिजेंस, उपलब्धता",
+        "B. गोपनीयता, अखंडता, उपलब्धता",
+        "C. कंप्यूटर, इंटरनेट, एक्सेस",
+        "D. गोपनीयता, सूचना, प्राधिकरण"
+    ],
+    answer:1
+},
+
+{
+    q:"आपको अपना घर का पता, फोन नंबर और वास्तविक समय की यात्रा योजनाएँ सोशल मीडिया पर सार्वजनिक रूप से साझा करने से क्यों बचना चाहिए?",
+    options:[
+        "A. इससे सर्वर की बहुत अधिक जगह भर जाती है",
+        "B. इससे सुरक्षा और निजता से जुड़े जोखिम पैदा हो सकते हैं",
+        "C. यह कानून के विरुद्ध है",
+        "D. इससे आपका अकाउंट अपने आप लॉक हो जाएगा"
+    ],
+    answer:1
+},
+
+{
+    q:"जब कोई हमलावर सही पासवर्ड खोजने तक व्यवस्थित रूप से कई संभावित पासवर्ड आज़माता है, तो इसे क्या कहा जाता है?",
+    options:[
+        "A. डिक्शनरी अटैक",
+        "B. क्रेडेंशियल स्टफिंग",
+        "C. ब्रूट फोर्स अटैक",
+        "D. पासवर्ड स्प्रेइंग"
+    ],
+    answer:2
+},
+
+{
+    q:"बेसिक फ़ायरवॉल को कॉन्फ़िगर करते समय वेब या ईमेल सर्वर जैसे सार्वजनिक रूप से उपलब्ध सर्वरों को किस नेटवर्क ज़ोन में रखा जाना चाहिए?",
+    options:[
+        "A. लोकल एरिया नेटवर्क (LAN)",
+        "B. डिमिलिटराइज़्ड ज़ोन (DMZ)",
+        "C. सुरक्षित स्टोरेज",
+        "D. एडमिन पोर्टल"
+    ],
+    answer:1
+},
+
+{
+    q:"एक सामान्य जोखिम आकलन मॉडल में जोखिम का अनुमान किस प्रकार लगाया जाता है?",
+    options:[
+        "A. खतरा × कमजोरी",
+        "B. संभावना × प्रभाव",
+        "C. हैकर × डेटा",
+        "D. सॉफ़्टवेयर × हार्डवेयर"
+    ],
+    answer:1
+},
+
+{
+    q:"कौन-सी सुरक्षा प्रक्रिया यह निर्धारित करती है कि कोई वैध उपयोगकर्ता किन संसाधनों को एक्सेस कर सकता है और कौन-से कार्य कर सकता है?",
+    options:[
+        "A. प्रमाणीकरण",
+        "B. प्राधिकरण",
+        "C. एन्क्रिप्शन",
+        "D. बैकअप लेना"
+    ],
+    answer:1
+},
+
+{
+    q:"यदि आपको एक जरूरी ईमेल प्राप्त होता है जिसमें कहा गया है कि लिंक पर क्लिक न करने पर आपका अकाउंट 10 मिनट में डिलीट कर दिया जाएगा, तो आपको क्या करना चाहिए?",
+    options:[
+        "A. तुरंत लिंक पर क्लिक करना चाहिए",
+        "B. अपना पासवर्ड बताकर जवाब देना चाहिए",
+        "C. लिंक पर क्लिक नहीं करना चाहिए और आधिकारिक माध्यम से सत्यापन करना चाहिए",
+        "D. ईमेल को सभी संपर्कों को भेज देना चाहिए"
+    ],
+    answer:2
+},
+
+{
+    q:"कौन-सी तकनीक पासवर्ड चोरी हो जाने के बाद भी दूसरी सत्यापन प्रक्रिया की आवश्यकता रखती है?",
+    options:[
+        "A. फ़ायरवॉल",
+        "B. एंटीवायरस",
+        "C. मल्टी-फैक्टर ऑथेंटिकेशन (MFA)",
+        "D. हैश फ़ंक्शन"
+    ],
+    answer:2
+},
+
+{
+    q:"सॉफ़्टवेयर और सिस्टम अपडेट क्यों महत्वपूर्ण होते हैं?",
+    options:[
+        "A. वे हार्ड ड्राइव का आकार बढ़ाते हैं",
+        "B. वे सुरक्षा कमजोरियों को ठीक करते हैं, त्रुटियों को सुधारते हैं और प्रदर्शन बेहतर करते हैं",
+        "C. वे पासवर्ड अपने आप बदल देते हैं",
+        "D. वे एंटीवायरस को बंद कर देते हैं"
+    ],
+    answer:1
+},
+
+{
+    q:"ऐसा मैलवेयर जो पीड़ितों को उनकी फाइलों तक पहुँचने से रोकता है और भुगतान की मांग करता है, उसे क्या कहा जाता है?",
+    options:[
+        "A. स्पाइवेयर",
+        "B. रैनसमवेयर",
+        "C. एडवेयर",
+        "D. रूटकिट"
+    ],
+    answer:1
+},
+
+{
+    q:"ऑनलाइन लेन-देन में OTP का उपयोग किस उद्देश्य से किया जाता है?",
+    options:[
+        "A. पासवर्ड को हमेशा के लिए बदलने के लिए",
+        "B. लेन-देन या लॉगिन को सत्यापित करने के लिए",
+        "C. हार्ड ड्राइव को एन्क्रिप्ट करने के लिए",
+        "D. इसे अजनबियों के साथ साझा करने के लिए"
+    ],
+    answer:1
+},
+
+{
+    q:"कौन-सा हमला किसी वेबसाइट या सेवा को भारी मात्रा में ट्रैफिक भेजकर अनुपलब्ध बनाने का प्रयास करता है?",
+    options:[
+        "A. फिशिंग",
+        "B. SQL इंजेक्शन",
+        "C. DDoS",
+        "D. मैन-इन-द-मिडिल"
+    ],
+    answer:2
+},
+
+{
+    q:"एन्क्रिप्शन में मूल पढ़ने योग्य जानकारी को क्या कहा जाता है?",
+    options:[
+        "A. सिफरटेक्स्ट",
+        "B. प्लेनटेक्स्ट",
+        "C. की",
+        "D. हैश"
+    ],
+    answer:1
+},
+
+{
+    q:"दर्जनों अकाउंट के लिए मजबूत पासफ्रेज़ सुरक्षित रूप से बनाने और स्टोर करने के लिए कौन-सा टूल उपयोग करना उचित है?",
+    options:[
+        "A. स्टिकी नोट",
+        "B. सार्वजनिक टेक्स्ट फाइल",
+        "C. क्लाउड-आधारित पासवर्ड मैनेजर",
+        "D. डिफ़ॉल्ट स्मार्टफोन नोटपैड"
+    ],
+    answer:2
+},
+
+{
+    q:"जब हमलावर एक सेवा से चुराए गए यूज़रनेम और पासवर्ड का उपयोग दूसरी सेवाओं में लॉगिन करने के लिए करते हैं, तो इसे क्या कहा जाता है?",
+    options:[
+        "A. कीलॉगिंग",
+        "B. स्पूफिंग",
+        "C. क्रेडेंशियल स्टफिंग",
+        "D. प्रीटेक्स्टिंग"
+    ],
+    answer:2
+},
+
+{
+    q:"मजबूत पासवर्ड की कौन-सी विशेषता होती है?",
+    options:[
+        "A. व्यक्तिगत जानकारी का उपयोग",
+        "B. छोटा और आसानी से याद होने वाला",
+        "C. अक्षरों, संख्याओं और विशेष प्रतीकों का संयोजन",
+        "D. कई वेबसाइटों पर एक ही पासवर्ड का उपयोग"
+    ],
+    answer:2
+},
+
+{
+    q:"कौन-सा मैलवेयर वैध फाइलों के साथ जुड़ जाता है और आमतौर पर फैलने के लिए उपयोगकर्ता की कार्रवाई की आवश्यकता होती है?",
+    options:[
+        "A. वर्म",
+        "B. ट्रोजन",
+        "C. वायरस",
+        "D. एडवेयर"
+    ],
+    answer:2
+},
+
+{
+    q:"दिए गए क्विज़ के अनुसार कर्मचारियों को अपने पासवर्ड कितनी बार बदलने चाहिए?",
+    options:[
+        "A. हर 10 दिन में",
+        "B. लगभग हर 90 दिन में",
+        "C. हर 5 साल में",
+        "D. कभी नहीं"
+    ],
+    answer:1
+},
+
+{
+    q:"प्रत्येक कर्मचारी को केवल उतनी ही एक्सेस देना जितनी उसके काम के लिए आवश्यक है, किस सिद्धांत को कहा जाता है?",
+    options:[
+        "A. अधिकतम एक्सेस",
+        "B. न्यूनतम विशेषाधिकार",
+        "C. दोहरा नियंत्रण",
+        "D. खुली सुरक्षा"
+    ],
+    answer:1
+},
+
+{
+    q:"असुरक्षित सार्वजनिक Wi-Fi पर दो पक्षों के बीच होने वाले संचार को गुप्त रूप से इंटरसेप्ट करना किसका उदाहरण है?",
+    options:[
+        "A. पासवर्ड अटैक",
+        "B. मैन-इन-द-मिडिल (MITM) अटैक",
+        "C. SQL इंजेक्शन",
+        "D. DoS अटैक"
+    ],
+    answer:1
+},
+
+{
+    q:"सार्वजनिक Wi-Fi का उपयोग करने का सामान्य जोखिम क्या है?",
+    options:[
+        "A. कनेक्शन की गति हमेशा बहुत तेज होती है",
+        "B. हमलावर डेटा को इंटरसेप्ट कर सकते हैं या नकली Wi-Fi हॉटस्पॉट बना सकते हैं",
+        "C. बैटरी तुरंत खत्म हो जाती है",
+        "D. एंटीवायरस अपने आप डाउनलोड हो जाता है"
+    ],
+    answer:1
+},
+
+{
+    q:"ऐसी सुरक्षा प्रणाली जो सुरक्षा नियमों के आधार पर नेटवर्क ट्रैफिक की निगरानी और फ़िल्टरिंग करती है, उसे क्या कहा जाता है?",
+    options:[
+        "A. एंटीवायरस",
+        "B. कीलॉगर",
+        "C. फ़ायरवॉल",
+        "D. मैलवेयर"
+    ],
+    answer:2
+},
+
+{
+    q:"CIA Triad का कौन-सा घटक यह सुनिश्चित करता है कि संवेदनशील डेटा केवल अधिकृत व्यक्तियों के लिए उपलब्ध हो?",
+    options:[
+        "A. गोपनीयता",
+        "B. अखंडता",
+        "C. उपलब्धता",
+        "D. प्राधिकरण"
+    ],
+    answer:0
+},
+
+{
+    q:"ईमेल में दिए गए लिंक पर क्लिक किए बिना उसके वास्तविक गंतव्य URL को कैसे सत्यापित किया जा सकता है?",
+    options:[
+        "A. उसे कॉपी करके किसी मित्र को भेजकर",
+        "B. माउस को लिंक के ऊपर ले जाकर",
+        "C. लिंक पर क्लिक करके और टैब बंद करके",
+        "D. ईमेल को प्रिंट करके"
+    ],
+    answer:1
+},
+
+{
+    q:"इनपुट फ़ील्ड में दुर्भावनापूर्ण कमांड डालकर डेटाबेस को प्रभावित करने वाले हमले को क्या कहा जाता है?",
+    options:[
+        "A. ज़ीरो-डे एक्सप्लॉइट",
+        "B. फिशिंग",
+        "C. SQL इंजेक्शन",
+        "D. रैनसमवेयर"
+    ],
+    answer:2
+},
+
+{
+    q:"मजबूत पासवर्ड का उपयोग करना, सॉफ़्टवेयर अपडेट करना और लिंक पर सावधानी से क्लिक करना जैसी नियमित सुरक्षा आदतों को क्या कहा जाता है?",
+    options:[
+        "A. साइबर हाइजीन",
+        "B. सोशल इंजीनियरिंग",
+        "C. पेनेट्रेशन टेस्टिंग",
+        "D. थ्रेट हंटिंग"
+    ],
+    answer:0
+},
+
+{
+    q:"किस सोशल इंजीनियरिंग तकनीक में हमलावर किसी अन्य व्यक्ति, जैसे IT कर्मचारी, होने का दिखावा करता है?",
+    options:[
+        "A. इम्पर्सोनेशन",
+        "B. बेटिंग",
+        "C. टेलगेटिंग",
+        "D. स्मिशिंग"
+    ],
+    answer:0
+},
+
+{
+    q:"आवाज़ या फोन कॉल के माध्यम से की जाने वाली फिशिंग को क्या कहा जाता है?",
+    options:[
+        "A. स्मिशिंग",
+        "B. विशिंग",
+        "C. व्हेलिंग",
+        "D. स्पूफिंग"
+    ],
+    answer:1
+},
+
+{
+    q:"जब कोई हमलावर कॉलर ID या ईमेल एड्रेस में हेरफेर करके खुद को किसी विश्वसनीय व्यक्ति या संगठन के रूप में दिखाता है, तो इसे क्या कहा जाता है?",
+    options:[
+        "A. स्पूफिंग",
+        "B. टेलगेटिंग",
+        "C. बेटिंग",
+        "D. एन्क्रिप्शन"
+    ],
+    answer:0
+},
+
+{
+    q:"DMARC का पूरा नाम क्या है?",
+    options:[
+        "A. डोमेन मैसेज ऑथेंटिकेशन एंड रिस्पॉन्स कंट्रोल",
+        "B. डोमेन-बेस्ड मैसेज ऑथेंटिकेशन, रिपोर्टिंग एंड कॉनफॉर्मेंस",
+        "C. डिजिटल मेल ऑथेंटिकेशन, रिपोर्टिंग एंड कंट्रोल",
+        "D. डोमेन मेल ऑथराइजेशन एंड रिस्पॉन्स कॉन्फ़िगरेशन"
+    ],
+    answer:1
+}
+
+
+];
+
+
+/* =========================================================
+   VARIABLES
+========================================================= */
+
+let questions = [];
+let currentQuestion = 0;
+let score = 0;
+let selectedAnswer = null;
+let timer = null;
+let timeLeft = QUESTION_TIME;
+let testStarted = false;
+let submitted = false;
+let selectedLanguage = "";
+
+
+/* =========================================================
+   VALIDATE QUESTION BANK
+========================================================= */
+
+if(englishQuestions.length !== TOTAL_QUESTIONS ||
+   hindiQuestions.length !== TOTAL_QUESTIONS){
+
+    console.error("Question bank must contain exactly 40 questions in each language.");
+}
+
+
+/* =========================================================
+   FORM VALIDATION
+========================================================= */
+
+function validateForm(){
+
+    const fields = [
+        "name",
+        "father",
+        "mobile",
+        "email",
+        "course",
+        "semester",
+        "language"
+    ];
+
+    for(const field of fields){
+
+        const element = document.getElementById(field);
+
+        if(element.value.trim() === ""){
+
+            alert(
+                selectedLanguage === "Hindi"
+                ? "सभी फ़ील्ड भरना अनिवार्य है।"
+                : "All fields are mandatory."
+            );
+
+            element.focus();
+
+            return false;
+        }
+    }
+
+
+    if(!/^[0-9]{10}$/.test(
+        document.getElementById("mobile").value.trim()
+    )){
+
+        alert(
+            "Enter a valid 10-digit mobile number."
+        );
+
+        document.getElementById("mobile").focus();
+
+        return false;
+    }
+
+    return true;
+}
+
+
+/* =========================================================
+   START TEST
+========================================================= */
+
+function startTest(){
+
+    if(!validateForm()) return;
+
+
+    selectedLanguage =
+        document.getElementById("language").value;
+
+
+    if(selectedLanguage === "English"){
+
+        questions = englishQuestions;
+
+    }else{
+
+        questions = hindiQuestions;
+    }
+
+
+    if(questions.length !== TOTAL_QUESTIONS){
+
+        alert("Question bank must contain exactly 40 questions.");
+
+        return;
+    }
+
+
+    testStarted = true;
+    submitted = false;
+    currentQuestion = 0;
+    score = 0;
+
+
+    document.getElementById("registration").style.display =
+        "none";
+
+    document.getElementById("quiz").style.display =
+        "block";
+
+
+    loadQuestion();
+}
+
+
+/* =========================================================
+   LOAD QUESTION
+========================================================= */
+
+function loadQuestion(){
+
+    clearInterval(timer);
+
+    timeLeft = QUESTION_TIME;
+
+    document.getElementById("time").innerText =
+        timeLeft;
+
+    selectedAnswer = null;
+
+
+    const q = questions[currentQuestion];
+
+
+    document.getElementById("questionNumber").innerText =
+        currentQuestion + 1;
+
+    document.getElementById("question").innerText =
+        q.q;
+
+
+    let html = "";
+
+
+    q.options.forEach((option,index)=>{
+
+        html += `
+            <div class="option"
+                 onclick="selectAnswer(${index},this)">
+                ${option}
+            </div>
+        `;
+
+    });
+
+
+    document.getElementById("options").innerHTML =
+        html;
+
+
+    if(currentQuestion === questions.length - 1){
+
+        document.getElementById("nextBtn").style.display =
+            "none";
+
+        document.getElementById("submitBtn").style.display =
+            "inline-block";
+
+    }else{
+
+        document.getElementById("nextBtn").style.display =
+            "inline-block";
+
+        document.getElementById("submitBtn").style.display =
+            "none";
+    }
+
+
+    startTimer();
+}
+
+
+/* =========================================================
+   TIMER
+========================================================= */
+
+function startTimer(){
+
+    timer = setInterval(()=>{
+
+        timeLeft--;
+
+        document.getElementById("time").innerText =
+            timeLeft;
+
+
+        if(timeLeft <= 0){
+
+            clearInterval(timer);
+
+            autoNext();
+        }
+
+    },1000);
+}
+
+
+/* =========================================================
+   SELECT ANSWER
+========================================================= */
+
+function selectAnswer(index,element){
+
+    selectedAnswer = index;
+
+
+    document.querySelectorAll(".option")
+        .forEach(opt=>{
+            opt.classList.remove("selected");
+        });
+
+
+    element.classList.add("selected");
+}
+
+
+/* =========================================================
+   CHECK ANSWER
+========================================================= */
+
+function checkCurrentAnswer(){
+
+    if(selectedAnswer === null){
+
+        return false;
+    }
+
+
+    return selectedAnswer ===
+        questions[currentQuestion].answer;
+}
+
+
+/* =========================================================
+   NEXT QUESTION
+========================================================= */
+
+function nextQuestion(){
+
+    if(selectedAnswer === null){
+
+        alert(
+            selectedLanguage === "Hindi"
+            ? "कृपया एक उत्तर चुनें।"
+            : "Please select an answer."
+        );
+
+        return;
+    }
+
+
+    if(checkCurrentAnswer()){
+
+        score += MARKS_PER_QUESTION;
+    }
+
+
+    currentQuestion++;
+
+
+    if(currentQuestion < questions.length){
+
+        loadQuestion();
+
+    }else{
+
+        submitTest();
+    }
+}
+
+
+/* =========================================================
+   AUTO NEXT
+========================================================= */
+
+function autoNext(){
+
+    if(checkCurrentAnswer()){
+
+        score += MARKS_PER_QUESTION;
+    }
+
+
+    currentQuestion++;
+
+
+    if(currentQuestion < questions.length){
+
+        loadQuestion();
+
+    }else{
+
+        submitTest();
+    }
+}
+
+
+/* =========================================================
+   SUBMIT TEST
+========================================================= */
+
+function submitTest(){
+
+    if(submitted) return;
+
+
+    clearInterval(timer);
+
+
+    /*
+       Score the last question only when it has
+       not already been scored.
+    */
+
+    if(
+        currentQuestion === questions.length - 1 &&
+        selectedAnswer !== null
+    ){
+
+        if(checkCurrentAnswer()){
+
+            score += MARKS_PER_QUESTION;
+        }
+    }
+
+
+    score = Math.round(score * 10) / 10;
+
+
+    submitted = true;
+    testStarted = false;
+
+
+    document.getElementById("quiz").style.display =
+        "none";
+
+    document.getElementById("result").style.display =
+        "block";
+
+
+    const studentName =
+        document.getElementById("name").value;
+
+
+    document.getElementById("studentName").innerText =
+        studentName;
+
+
+    /*
+       IMPORTANT:
+       Score is NOT shown to the student.
+       Score is saved only in Google Sheets.
+    */
+
+    sendDataToGoogleSheet();
+}
+
+
+/* =========================================================
+   SEND DATA TO GOOGLE SHEETS
+========================================================= */
+
+function sendDataToGoogleSheet(){
+
+    const data = {
+
+        name:
+            document.getElementById("name").value.trim(),
+
+        father:
+            document.getElementById("father").value.trim(),
+
+        mobile:
+            document.getElementById("mobile").value.trim(),
+
+        email:
+            document.getElementById("email").value.trim(),
+
+        course:
+            document.getElementById("course").value.trim(),
+
+        semester:
+            document.getElementById("semester").value.trim(),
+
+        language:
+            selectedLanguage,
+
+        marks:
+            score,
+
+        result:
+            "Completed"
+    };
+
+
+    fetch(SHEET_URL, {
+
+        method: "POST",
+
+        body: JSON.stringify(data)
+
+    })
+
+    .then(response => {
+
+        console.log(
+            "Test result successfully sent to Google Sheets."
+        );
+
+    })
+
+    .catch(error => {
+
+        console.error(
+            "Google Sheet Error:",
+            error
+        );
+
+    });
+}
+
+
+/* =========================================================
+   TAB SWITCH / MINIMIZE DETECTION
+========================================================= */
+
+document.addEventListener(
+    "visibilitychange",
+    ()=>{
+
+        if(
+            document.hidden &&
+            testStarted &&
+            !submitted
+        ){
+
+            alert(
+                selectedLanguage === "Hindi"
+                ? "Tab Switching या Minimize करने के कारण टेस्ट auto-submit हो गया है।"
+                : "Test auto-submitted due to Tab Switching or Minimize."
+            );
+
+
+            submitTest();
+        }
+
+    }
+);
+
+
+/* =========================================================
+   DISABLE RIGHT CLICK
+========================================================= */
+
+document.addEventListener(
+    "contextmenu",
+    e=>{
+
+        e.preventDefault();
+
+        alert(
+            selectedLanguage === "Hindi"
+            ? "Right click की अनुमति नहीं है।"
+            : "Right click is not allowed."
+        );
+
+    }
+);
+
+
+/* =========================================================
+   DISABLE COMMON SHORTCUTS
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    e=>{
+
+        if(
+            e.key === "F12" ||
+            (
+                e.ctrlKey &&
+                ["u","U","c","C","i","I","j","J"].includes(e.key)
+            )
+        ){
+
+            e.preventDefault();
+        }
+
+    }
+);
+
+
+/* =========================================================
+   FULLSCREEN
+   Ctrl + Shift + F
+========================================================= */
+
+function toggleFullscreen(){
+
+    if(!document.fullscreenElement){
+
+        document.documentElement
+            .requestFullscreen()
+            .catch(()=>{});
+
+    }else{
+
+        document.exitFullscreen()
+            .catch(()=>{});
+    }
+}
+
+
+document.addEventListener(
+    "keydown",
+    e=>{
+
+        if(
+            e.ctrlKey &&
+            e.shiftKey &&
+            e.key.toLowerCase() === "f"
+        ){
+
+            e.preventDefault();
+
+            toggleFullscreen();
+        }
+
+    }
+);
+
+</script>
+
+</body>
+</html>
